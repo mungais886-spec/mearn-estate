@@ -10,6 +10,16 @@ App.use(express.json());
 
 App.use("/backend/user", router);
 App.use("/backend/auth", authRoute);
+App.use((error,req,res,next)=>{
+    const statusCode = error.statusCode || 500;
+    const message = error.message || "internal server Error"
+    return res.status(statusCode).json({
+        success:false,
+        statusCode,
+        message,
+    })
+})
+
 
 mongoose
   .connect(process.env.MONGO)
