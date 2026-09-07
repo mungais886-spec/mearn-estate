@@ -55,10 +55,10 @@ function Navbar() {
             </Link>
 
             <Link
-              to="/signin"
+              to="/signup"
               className="whitespace-nowrap rounded-md bg-green-700 px-4 py-2 text-sm font-medium text-white hover:bg-green-800"
             >
-              Sign In
+              Sign Up
             </Link>
           </div>
 
@@ -116,11 +116,11 @@ function Navbar() {
               </Link>
 
               <Link
-                to="/signin"
+                to="/signup"
                 onClick={() => setOpen(false)}
                 className="mt-1 rounded-md bg-green-700 px-4 py-2 text-center text-sm font-medium text-white"
               >
-                Sign In
+                Sign Up
               </Link>
             </div>
           </div>
