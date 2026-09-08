@@ -3,11 +3,19 @@ import express from "express";
 import mongoose from "mongoose";
 import router from "./Routes/user.route.js";
 import authRoute from "./Routes/auth.route.js";
+import cors from 'cors';
+
 
 const App = express();
-
 App.use(express.json());
 
+
+App.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
 App.use("/backend/user", router);
 App.use("/backend/auth", authRoute);
 App.use((error,req,res,next)=>{
