@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -20,16 +19,12 @@ function SignUp() {
       [e.target.name]: e.target.value,
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (loading) return;
-
     try {
       setLoading(true);
       setError(null);
-
       const res = await fetch("/backend/auth/signup", {
         method: "POST",
         headers: {
@@ -101,7 +96,6 @@ function SignUp() {
             >
               Email
             </label>
-
             <input
               id="email"
               name="email"
@@ -113,7 +107,6 @@ function SignUp() {
               className="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-lg text-slate-900 placeholder-slate-400 outline-none focus:bg-white focus:border-slate-800 focus:ring-2 focus:ring-slate-200 disabled:opacity-60 transition duration-200"
             />
           </div>
-
           <div>
             <label
               htmlFor="password"
@@ -121,7 +114,6 @@ function SignUp() {
             >
               Password
             </label>
-
             <input
               id="password"
               name="password"
@@ -134,11 +126,7 @@ function SignUp() {
             />
           </div>
 
-          {error && (
-            <p className="text-sm text-red-600">
-              {error}
-            </p>
-          )}
+          {error && <p className="text-sm text-red-600">{error}</p>}
 
           <button
             id="signupButton"
