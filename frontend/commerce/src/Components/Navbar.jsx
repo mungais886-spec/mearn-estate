@@ -12,9 +12,8 @@ function Navbar() {
             to="/"
             className="shrink-0 text-xl font-bold text-gray-900 sm:text-2xl"
           >
-            Mearn Estate
+          Mearn Estate
           </Link>
-
           <form className="hidden min-w-0 flex-1 md:block">
             <div className="mx-auto flex w-full max-w-md overflow-hidden rounded-md border border-gray-300">
               <input
@@ -22,24 +21,21 @@ function Navbar() {
                 placeholder="Search properties..."
                 className="min-w-0 flex-1 px-3 py-2 text-sm text-gray-800 outline-none"
               />
-
               <button
                 type="submit"
                 className="shrink-0 bg-green-700 px-4 py-2 text-sm font-medium text-white hover:bg-green-800"
               >
-                Search
+               Search
               </button>
             </div>
           </form>
-
           <div className="hidden items-center gap-5 md:flex">
             <Link
               to="/"
               className="whitespace-nowrap text-sm font-medium text-gray-700 hover:text-green-700"
             >
-              Home
+            Home
             </Link>
-
             <Link
               to="/about"
               className="whitespace-nowrap text-sm font-medium text-gray-700 hover:text-green-700"
@@ -78,7 +74,6 @@ function Navbar() {
               placeholder="Search properties..."
               className="min-w-0 flex-1 px-3 py-2 text-sm text-gray-800 outline-none"
             />
-
             <button
               type="submit"
               className="shrink-0 bg-green-700 px-4 py-2 text-sm font-medium text-white"
