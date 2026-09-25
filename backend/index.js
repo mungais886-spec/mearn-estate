@@ -9,7 +9,6 @@ import cors from 'cors';
 const App = express();
 App.use(express.json());
 
-
 App.use(
   cors({
     origin: "http://localhost:5173",
@@ -18,14 +17,14 @@ App.use(
 );
 App.use("/backend/user", router);
 App.use("/backend/auth", authRoute);
-App.use((error,req,res,next)=>{
-    const statusCode = error.statusCode || 500;
-    const message = error.message || "internal server Error"
-    return res.status(statusCode).json({
-        success:false,
-        statusCode,
-        message,
-    })
+App.use((error, req, res, next) => {
+  const statusCode = error.statusCode || 500;
+  const message = error.message || "internal server Error"
+  return res.status(statusCode).json({
+    success: false,
+    statusCode,
+    message,
+  })
 })
 
 
