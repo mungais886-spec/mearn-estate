@@ -1,10 +1,9 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { use } from "react";
 
 function Navbar() {
+  const { currentUser } = useSelector((state) => state.user);
   const [open, setOpen] = useState(false);
 
   return (
@@ -56,12 +55,29 @@ function Navbar() {
               Contact
             </Link>
 
-            <Link
-              to="/signup"
-              className="whitespace-nowrap rounded-lg bg-yellow-500 px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-yellow-400"
-            >
-              Sign Up
-            </Link>
+            {currentUser ? (
+              <Link
+                to="/profile"
+                className="flex items-center gap-3"
+              >
+                <img
+                  src={currentUser.avatar}
+                  alt="Profile"
+                  className="h-10 w-10 rounded-full border border-yellow-400 object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = "none";
+                  }}
+                />
+            
+              </Link>
+            ) : (
+              <Link
+                to="/signin"
+                className="rounded-lg bg-yellow-500 px-5 py-2.5 text-sm font-semibold text-black"
+              >
+                Sign In
+              </Link>
+            )}
           </div>
 
           <button
@@ -69,7 +85,7 @@ function Navbar() {
             onClick={() => setOpen(!open)}
             className="ml-auto rounded-lg border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/10 md:hidden"
           >
-            Menu
+            {open ? "Close" : "Menu"}
           </button>
         </div>
 
@@ -116,13 +132,27 @@ function Navbar() {
                 Contact
               </Link>
 
-              <Link
-                to="/signup"
-                onClick={() => setOpen(false)}
-                className="mt-2 rounded-lg bg-yellow-500 px-4 py-3 text-center text-sm font-semibold text-black transition hover:bg-yellow-400"
-              >
-                Sign Up
-              </Link>
+              {currentUser ? (
+                <Link
+                  to="/profile"
+                  onClick={() => setOpen(false)}
+                  className="mt-2 flex items-center gap-3 rounded-lg px-4 py-3 text-white hover:bg-white/5"
+                >
+                  <img
+                    src={currentUser.avatar}
+                    alt="Profile"
+                    className="h-10 w-10 rounded-full border border-yellow-400 object-cover"
+                  />
+                </Link>
+              ) : (
+                <Link
+                  to="/signin"
+                  onClick={() => setOpen(false)}
+                  className="mt-2 rounded-lg bg-yellow-500 px-4 py-3 text-center text-sm font-semibold text-black transition hover:bg-yellow-400"
+                >
+                  Sign In
+                </Link>
+              )}
             </div>
           </div>
         )}

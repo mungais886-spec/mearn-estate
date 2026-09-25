@@ -18,8 +18,7 @@ const userSchema = new mongoose.Schema(
     },
     avatar: {
       type: String,
-      default:
-        "https://pixabay.com/vectors/blank-profile-picture-mystery-man-973460/",
+      default: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
     },
   },
   { timestamps: true },
