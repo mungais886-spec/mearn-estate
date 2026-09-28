@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -144,7 +143,10 @@ function Navbar() {
                 >
                   {currentUser.avatar ? (
                     <img
-                      src={currentUser.avatar}
+                      src={
+                        currentUser.avatar ||
+                        "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                      }
                       alt="Profile"
                       className="h-10 w-10 rounded-full border-2 border-slate-500 object-cover"
                     />

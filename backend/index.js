@@ -4,10 +4,11 @@ import mongoose from "mongoose";
 import router from "./Routes/user.route.js";
 import authRoute from "./Routes/auth.route.js";
 import cors from 'cors';
-
+import cookieParser from "cookie-parser";
 
 const App = express();
 App.use(express.json());
+App.use(cookieParser());
 
 App.use(
   cors({
