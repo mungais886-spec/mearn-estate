@@ -2,6 +2,23 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { UserCircle } from "lucide-react";
+import {
+  UserRound,
+  Camera,
+  LogOut,
+  Trash2,
+  ShieldCheck,
+  House,
+  Settings,
+  ChevronRight,
+  Menu,
+  X,
+  CheckCircle2,
+  AlertCircle,
+  Mail,
+  CalendarDays,
+  Pencil,
+} from "lucide-react";
 
 function Navbar() {
   const { currentUser } = useSelector((state) => state.user);
@@ -11,6 +28,9 @@ function Navbar() {
     <header className="fixed left-0 top-0 z-50 w-full border-b border-slate-700/60 bg-slate-900/95 shadow-sm backdrop-blur-md">
       <nav className="mx-auto w-full max-w-7xl px-5 py-4 lg:px-8">
         <div className="flex items-center gap-6">
+          <div className="w-10 h-10 rounded-xl bg-yellow-400 flex items-center justify-center">
+              <House className="w-5 h-5 text-slate-900" />
+            </div>
           <Link
             to="/"
             className="shrink-0 text-xl font-bold tracking-tight text-white sm:text-2xl"
