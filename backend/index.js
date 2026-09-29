@@ -5,6 +5,7 @@ import router from "./Routes/user.route.js";
 import authRoute from "./Routes/auth.route.js";
 import cors from 'cors';
 import cookieParser from "cookie-parser";
+import listingRouter from './Routes/listing.router.js'
 
 const App = express();
 App.use(express.json());
@@ -27,12 +28,13 @@ App.use((error, req, res, next) => {
     message,
   })
 })
+App.use("/backend/listing",listingRouter)
 
 
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
-    console.log("Connected to database");
+console.log("Connected to database");
   })
   .catch((err) => {
     console.log("Database connection failed");
@@ -42,3 +44,4 @@ mongoose
 App.listen(3000, () => {
   console.log("Server running on port 3000");
 });
+
