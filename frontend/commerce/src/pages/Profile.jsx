@@ -17,7 +17,6 @@ import {
   CheckCircle2,
   AlertCircle,
   Mail,
-  CalendarDays,
   Pencil,
 } from "lucide-react";
 
@@ -151,17 +150,25 @@ export const Profile = () => {
     }
   };
 
+  const handleCreateListing = () => {
+    setMobileMenu(false);
+    navigate("/create-listing");
+  };
+
   if (!currentUser) {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4">
         <div className="bg-white border border-slate-200 rounded-2xl p-8 text-center max-w-sm w-full">
           <UserRound className="w-12 h-12 text-slate-400 mx-auto mb-4" />
+
           <h2 className="text-xl font-bold text-slate-800">
             Sign in required
           </h2>
+
           <p className="text-slate-500 text-sm mt-2">
             Please sign in to access your account dashboard.
           </p>
+
           <button
             onClick={() => navigate("/signin")}
             className="mt-6 w-full bg-slate-900 text-white py-3 rounded-xl font-semibold hover:bg-slate-700 transition"
@@ -185,6 +192,7 @@ export const Profile = () => {
               <div className="w-10 h-10 rounded-xl bg-yellow-400 flex items-center justify-center">
                 <House className="w-5 h-5 text-slate-900" />
               </div>
+
               <div>
                 <h1 className="text-lg font-bold tracking-tight">
                   Zion'sHomes
@@ -215,9 +223,22 @@ export const Profile = () => {
               <span className="text-sm font-semibold">My Profile</span>
             </div>
 
+            <button
+              onClick={handleCreateListing}
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 hover:bg-yellow-400 hover:text-slate-900 transition mt-2"
+            >
+              <House className="w-5 h-5" />
+              <span className="text-sm font-semibold">
+                Create Listing
+              </span>
+              <ChevronRight className="w-4 h-4 ml-auto" />
+            </button>
+
             <div className="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-300 mt-2">
               <Settings className="w-5 h-5" />
-              <span className="text-sm font-medium">Account Settings</span>
+              <span className="text-sm font-medium">
+                Account Settings
+              </span>
             </div>
           </div>
 
@@ -229,6 +250,7 @@ export const Profile = () => {
                   alt="Profile"
                   className="w-10 h-10 rounded-full object-cover border border-white/20"
                 />
+
                 <div className="min-w-0">
                   <p className="text-sm font-semibold truncate">
                     {currentUser.username}
@@ -308,6 +330,15 @@ export const Profile = () => {
               </button>
 
               <button
+                onClick={handleCreateListing}
+                className="flex items-center gap-3 w-full rounded-xl p-3 text-sm font-semibold text-slate-600 hover:bg-yellow-50 hover:text-slate-900 transition"
+              >
+                <House className="w-5 h-5" />
+                Create Listing
+                <ChevronRight className="w-4 h-4 ml-auto" />
+              </button>
+
+              <button
                 onClick={handleSignOut}
                 disabled={signingOut}
                 className="flex items-center gap-3 w-full rounded-xl p-3 text-sm text-red-600 hover:bg-red-50 disabled:opacity-50"
@@ -323,9 +354,11 @@ export const Profile = () => {
               <p className="text-sm text-slate-500 mb-2">
                 Dashboard / My Profile
               </p>
+
               <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900">
                 My Profile
               </h1>
+
               <p className="text-slate-500 mt-2 text-sm sm:text-base">
                 Manage your personal details and account preferences.
               </p>
@@ -371,11 +404,13 @@ export const Profile = () => {
                           <h2 className="text-xl sm:text-2xl font-bold text-slate-900 break-words">
                             {currentUser.username}
                           </h2>
+
                           <span className="inline-flex items-center gap-1 rounded-full bg-green-50 px-2.5 py-1 text-xs font-semibold text-green-700">
                             <CheckCircle2 className="w-3.5 h-3.5" />
                             Active
                           </span>
                         </div>
+
                         <p className="text-sm text-slate-500 mt-1 break-all">
                           {currentUser.email}
                         </p>
@@ -397,10 +432,12 @@ export const Profile = () => {
                       <h2 className="text-lg font-bold text-slate-900">
                         Personal Information
                       </h2>
+
                       <p className="text-sm text-slate-500 mt-1">
                         Update your account details.
                       </p>
                     </div>
+
                     <div className="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center">
                       <Pencil className="w-5 h-5 text-slate-600" />
                     </div>
@@ -418,8 +455,10 @@ export const Profile = () => {
                         >
                           Username
                         </label>
+
                         <div className="relative">
                           <UserRound className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+
                           <input
                             type="text"
                             id="username"
@@ -439,8 +478,10 @@ export const Profile = () => {
                         >
                           Email Address
                         </label>
+
                         <div className="relative">
                           <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+
                           <input
                             type="email"
                             id="email"
@@ -449,6 +490,7 @@ export const Profile = () => {
                             className="w-full rounded-xl border border-slate-200 bg-slate-100 py-3 pl-11 pr-4 text-sm text-slate-500 outline-none cursor-not-allowed"
                           />
                         </div>
+
                         <p className="text-xs text-slate-400 mt-2">
                           Your email address cannot be changed here.
                         </p>
@@ -473,12 +515,14 @@ export const Profile = () => {
                       <p className="text-xs text-slate-400">
                         Make sure your information is accurate.
                       </p>
+
                       <button
                         type="submit"
                         disabled={loading}
                         className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 disabled:opacity-50"
                       >
                         {loading ? "Saving Changes..." : "Save Changes"}
+
                         {!loading && (
                           <ChevronRight className="w-4 h-4" />
                         )}
@@ -494,6 +538,7 @@ export const Profile = () => {
                     <div className="w-11 h-11 rounded-xl bg-yellow-50 flex items-center justify-center">
                       <ShieldCheck className="w-5 h-5 text-yellow-700" />
                     </div>
+
                     <div>
                       <h3 className="font-bold text-slate-900">
                         Account Security
@@ -509,6 +554,7 @@ export const Profile = () => {
                       <span className="text-sm text-slate-500">
                         Account status
                       </span>
+
                       <span className="text-xs font-semibold text-green-700 bg-green-50 px-2.5 py-1 rounded-full">
                         Active
                       </span>
@@ -518,6 +564,7 @@ export const Profile = () => {
                       <span className="text-sm text-slate-500">
                         Authentication
                       </span>
+
                       <span className="text-sm font-semibold text-slate-800">
                         Protected
                       </span>
@@ -537,10 +584,12 @@ export const Profile = () => {
                     <div className="w-11 h-11 rounded-xl bg-slate-100 flex items-center justify-center">
                       <Settings className="w-5 h-5 text-slate-700" />
                     </div>
+
                     <div>
                       <h3 className="font-bold text-slate-900">
                         Account Actions
                       </h3>
+
                       <p className="text-xs text-slate-500 mt-1">
                         Manage your account
                       </p>
@@ -563,15 +612,18 @@ export const Profile = () => {
                       <div className="w-9 h-9 rounded-lg bg-slate-100 flex items-center justify-center">
                         <LogOut className="w-4 h-4 text-slate-600" />
                       </div>
+
                       <div>
                         <p className="text-sm font-semibold text-slate-800">
                           {signingOut ? "Signing Out..." : "Sign Out"}
                         </p>
+
                         <p className="text-xs text-slate-400 mt-1">
                           End your current session
                         </p>
                       </div>
                     </div>
+
                     <ChevronRight className="w-4 h-4 text-slate-400" />
                   </button>
 
@@ -588,15 +640,18 @@ export const Profile = () => {
                       <div className="w-9 h-9 rounded-lg bg-red-50 flex items-center justify-center">
                         <Trash2 className="w-4 h-4 text-red-600" />
                       </div>
+
                       <div>
                         <p className="text-sm font-semibold text-red-600">
                           Delete Account
                         </p>
+
                         <p className="text-xs text-slate-400 mt-1">
                           Permanently remove your account
                         </p>
                       </div>
                     </div>
+
                     <ChevronRight className="w-4 h-4 text-red-400" />
                   </button>
                 </section>
@@ -605,13 +660,16 @@ export const Profile = () => {
                   <div className="w-10 h-10 rounded-xl bg-yellow-400 flex items-center justify-center mb-4">
                     <House className="w-5 h-5 text-slate-900" />
                   </div>
+
                   <h3 className="font-bold text-lg">
                     Welcome to Zion'sHomes
                   </h3>
+
                   <p className="text-sm text-slate-300 leading-6 mt-2">
                     Your space to manage your account and explore your next
                     property.
                   </p>
+
                   <button
                     onClick={() => navigate("/")}
                     className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-yellow-400 hover:text-yellow-300 transition"

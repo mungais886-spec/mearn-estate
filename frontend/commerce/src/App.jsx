@@ -7,6 +7,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import { Profile } from "./pages/Profile";
 import { PrivateRoute } from "./Components/PrivateRoute";
+import CreateListing from "./pages/createListing";
 function App() {
   return (
     <>
